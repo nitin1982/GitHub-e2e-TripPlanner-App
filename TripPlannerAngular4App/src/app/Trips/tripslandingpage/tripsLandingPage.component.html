@@ -1,0 +1,13 @@
+<div class="container">
+  <h3>Welcome to Trips Page</h3>
+  <ul class="nav nav-pills">
+    <li routerLinkActive="active">
+        <a [routerLink]="['UpcomingTrips']">Upcoming Trips</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+        <a [routerLink]="['PastTrips']">Past Trips</a>
+    </li>
+</ul>
+<br>
+<router-outlet></router-outlet>
+</div>
