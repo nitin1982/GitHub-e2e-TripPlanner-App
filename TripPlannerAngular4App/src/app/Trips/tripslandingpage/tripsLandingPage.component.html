@@ -1,13 +1,19 @@
-<div class="container">
-  <h3>Welcome to Trips Page</h3>
-  <ul class="nav nav-pills">
-    <li routerLinkActive="active">
-        <a [routerLink]="['UpcomingTrips']">Upcoming Trips</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-        <a [routerLink]="['PastTrips']">Past Trips</a>
-    </li>
-</ul>
-<br>
-<router-outlet></router-outlet>
+<div class="panel panel-default">
+  <div class="panel-heading">Welcome to Trips Page</div>
+  <div class="panel-body panelMinHeight">
+    <ul class="nav nav-pills">
+      <li routerLinkActive="active">
+          <a [routerLink]="['UpcomingTrips']">Upcoming Trips</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+          <a [routerLink]="['PastTrips']">Past Trips</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a [routerLink]="['Trips', 0 , 'Edit']">Add a Trips</a>
+      </li>
+    </ul>
+    <br>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="panel-footer">&nbsp;</div>
 </div>
