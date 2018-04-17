@@ -16,7 +16,9 @@ namespace TripPlanner.DAL
         public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Reference> References { get; set; }
         public virtual DbSet<ReferenceCategory> ReferenceCategories { get; set; }
+        public virtual DbSet<Stay> Stays { get; set; }
         public virtual DbSet<Trip> Trips { get; set; }
+        public virtual DbSet<TripGroup> TripGroups { get; set; }
         public virtual DbSet<TripImportantDate> TripImportantDates { get; set; }
         public virtual DbSet<WebLink> WebLinks { get; set; }
 
@@ -97,7 +99,7 @@ namespace TripPlanner.DAL
             modelBuilder.Entity<ReferenceCategory>()
                 .Property(e => e.ID).HasColumnName("ReferenceCategoryID");
 
-            
+
             modelBuilder.Entity<Trip>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
@@ -107,9 +109,8 @@ namespace TripPlanner.DAL
                 .IsUnicode(false);
 
             modelBuilder.Entity<Trip>()
-                .HasMany(e => e.ChildrenTrips)
-                .WithOptional(e => e.ParentTrip)
-                .HasForeignKey(e => e.ParentTripID);
+                .Property(e => e.Place)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Trip>()
                 .Property(e => e.ID).HasColumnName("TripID");
@@ -132,6 +133,79 @@ namespace TripPlanner.DAL
             modelBuilder.Entity<WebLink>()
                 .Property(e => e.ID).HasColumnName("WebLinkID");
 
+            modelBuilder.Entity<TripGroup>()
+                .Property(e => e.GroupTitle)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TripGroup>()
+                .Property(e => e.GroupDetail)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TripGroup>()
+                .Property(e => e.ID).HasColumnName("TripGroupID");
+
+            modelBuilder.Entity<Stay>()
+               .Property(e => e.HotelName)
+               .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+               .Property(e => e.ID).HasColumnName("StayID");
+
+            modelBuilder.Entity<Trip>()
+                .Property(e => e.Place)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.HotelName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.Street1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.Street2)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.City)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.State)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.Zip)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.ContactNo1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.ContactNo2)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.ContactPersonFirstName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.ContactPersonMiddleName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.ContactPersonLastName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Stay>()
+                .Property(e => e.Website)
+                .IsUnicode(false);
         }
     }
 }

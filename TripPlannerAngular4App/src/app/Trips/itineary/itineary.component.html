@@ -1,3 +1,10 @@
-<p>
-  itineary works!
-</p>
+<form novalidate
+    #tripItnFrm = "ngForm">
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text"
+        name='title'
+        [(ngModel)]='trip.title' >
+  </div>
+  <pre>{{ tripItnFrm.value | json }}</pre>
+</form>

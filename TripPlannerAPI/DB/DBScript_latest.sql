@@ -1,11 +1,18 @@
 ﻿USE master
+IF EXISTS(select * from sys.databases where name='TripPlannerDB')
+begin
+	DROP DATABASE TripPlannerDB
+	print 'TripPlannerDB dropped..'
+end
+
 Create Database TripPlannerDB
 Go
+print 'TripPlannerDB created..'
 -----
 Use TripPlannerDB
 Go
 ----
-print 'TripPlannerDB created..'
+
 
 
 
@@ -33,18 +40,49 @@ Create Table Reference
 
 print 'Reference table created..'
 
+Create Table TripGroup
+(
+	TripGroupID int primary key identity(1,1),
+	GroupTitle varchar(50),
+	GroupDetail varchar(1000) null
+)
+
+print 'TripGroup table created..'
+
 Create Table Trip
 (
 	TripID int primary key identity(1,1),
 	Title varchar(50),
 	Detail varchar(1000) null,
+	Place varchar(30),
 	StartDate datetime null,
-	EndDate datetime null,
-	ParentTripID int foreign key references Trip(TripID) null,
-	TripTypeID int foreign key references Reference(ReferenceID) null
+	EndDate datetime null,	
+	TripTypeID int foreign key references Reference(ReferenceID) null,
+	TripGroupID int foreign key references TripGroup(TripGroupID) null
 )
 
 print 'Trip table created..'
+
+Create Table Stay
+(
+	StayID int primary key identity(1,1),
+	HotelName varchar(50),
+	Street1 varchar(50) null,
+	Street2 varchar(50) null,
+	City varchar(15) null,
+	State varchar(10) null,
+	Zip varchar(5) null,
+	ContactNo1 varchar(10) null,
+	ContactNo2 varchar(10) null,
+	Email varchar(150) null,
+	ContactPersonFirstName varchar(20) null,
+	ContactPersonMiddleName varchar(20) null,
+	ContactPersonLastName varchar(20) null,
+	Website varchar(80) null,
+	TripID int foreign key references Trip(TripID)
+)
+
+print 'Stay table created..'
 
 Create Table WebLink
 (

@@ -11,6 +11,7 @@ import { TripDocumentsComponent } from './trip-documents/trip-documents.componen
 import { TripPicsComponent } from './trip-pics/trip-pics.component';
 import { TripWeblinksComponent } from './trip-weblinks/trip-weblinks.component';
 import { TripDescriptionComponent } from './trip-description/trip-description.component';
+import { FormsModule } from '@angular/forms';
 
 const tripRoutes: Routes = [{
   path: 'Trips',
@@ -76,7 +77,7 @@ const tripRoutes: Routes = [{
     TripDescriptionComponent,
     ItinearyComponent
   ],
-  imports: [ CommonModule, RouterModule.forChild(tripRoutes) ],
+  imports: [ CommonModule, FormsModule, RouterModule.forChild(tripRoutes) ],
   exports: [RouterModule],
   providers: [],
 })
